@@ -5,13 +5,19 @@ import SmallCard from "../components/SmallCard";
 import MediumCard from "../components/MediumCard";
 import LargeCard from "../components/LargeCard";
 import Footer from "../components/Footer";
+import HostCard from "../components/HostCard";
+import MediumCard2 from "../components/MediumCard2";
 
-export default function Home({ exploreData, cardsData }) {
+export default function Home({ exploreData, cardsData, cardsData2 }) {
+  console.log(cardsData2);
   return (
     <div className="">
       <Head>
-        <title>Airbnb</title>
-        <link rel="icon" href="/favicon.ico"/>
+        <title>
+          Airbnb: Holiday Rentals, Cabins, Beach Houses, Unique Homes &
+          Experiences
+        </title>
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <Header />
       <Banner />
@@ -36,8 +42,24 @@ export default function Home({ exploreData, cardsData }) {
           </div>
         </section>
 
-        <LargeCard 
-          img ="https://links.papareact.com/4cj"
+        <HostCard />
+
+        <section className="pt-2">
+          <div className="py-8">
+            <h2 className="text-4xl font-semibold">Discover Experiences</h2>
+            <p className="text-xl">
+              Unique activities with local experts – in person or online.
+            </p>
+          </div>
+          <div className="flex space-x-3">
+            {cardsData2.map((item) => (
+              <MediumCard2 key={item.img} item={item} />
+            ))}
+          </div>
+        </section>
+
+        <LargeCard
+          img="https://links.papareact.com/4cj"
           title="The Greatest Outdoors"
           description="Wishlists curated by Airbnb."
           buttonText="Get Inspired"
@@ -57,5 +79,9 @@ export async function getStaticProps() {
     res.json()
   );
 
-  return { props: { exploreData, cardsData } };
+  const cardsData2 = await fetch("https://jsonkeeper.com/b/W77S").then((res) =>
+    res.json()
+  );
+
+  return { props: { exploreData, cardsData, cardsData2 } };
 }

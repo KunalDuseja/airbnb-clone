@@ -40,7 +40,7 @@ function search({ searchResults }) {
           </div>
         </section>
         <section className="min-w-[600px]">
-          <Map searchResults={searchResults}/>
+          <Map searchResults={searchResults} />
         </section>
       </main>
 

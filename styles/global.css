@@ -1,9 +1,22 @@
 @tailwind components;
 
 @layer components {
-    .button {
-        @apply px-4 py-2 border rounded-full
+  .button {
+    @apply px-4 py-2 border rounded-full
          cursor-pointer hover:shadow-lg active:scale-95
         active:bg-gray-100 transition transform duration-100 ease-out;
-    }
+  }
+}
+
+.normal {
+  @apply z-50 grid grid-cols-3 py-3 md:px-10 fixed top-0 w-full h-6 transition ease-in text-white placeholder-white;
+}
+.scroll {
+  @apply z-50 grid grid-cols-3 py-3 md:px-10 fixed top-0 w-full transition ease-in bg-white h-20 text-black placeholder-black;
+}
+.placeholder {
+  @apply flex-grow pl-5 bg-transparent outline-none text-sm font-semibold placeholder-white;
+}
+.placeholder_scrolled {
+  @apply flex-grow pl-5 bg-transparent outline-none text-sm font-semibold placeholder-black;
 }
